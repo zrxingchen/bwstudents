@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Edit item</h3>
+<form method="post">
+    name <input type="text" name="name" autocomplete="off" required value="{{ student.name }}">
+    E_score <input type="text" name="E_score " autocomplete="off" required value="{{ student. E_score}}">
+    P_score <input type="text" name="E_score " autocomplete="off" required value="{{ student.P_score }}">
+    C_score <input type="text" name="E_score " autocomplete="off" required value="{{ student. C_score}}">
+    <input class="btn" type="submit" name="submit" value="Update">
+</form>
+{% endblock %}

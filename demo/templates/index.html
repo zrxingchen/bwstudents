@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>{{ iniformation |length }} name</p>
+{% if current_user.is_authenticated %}
+<form method="post">
+    name <input type="text" name="name" autocomplete="off" required>
+    E_score <input type="text" name="E_score" autocomplete="off" required>
+    P_score <input type="text" name="p_score" autocomplete="off" required>
+    C_score <input type="text" name="C_score" autocomplete="off" required>
+    <input class="btn" type="submit" name="submit" value="Add">
+</form>
+{% endif %}
+<ul class="movie-list">
+    {% for student in iniformation %}
+    <li>{{ student.name }} - {{ student.E_score }} - {{ student.P_score }} - {{ student.C_score }}
+        <span class="float-right">
+            {% if current_user.is_authenticated %}
+            <a class="btn" href="{{ url_for('edit', student_id=student.id) }}">Edit</a>
+            <form class="inline-form" method="post" action="{{ url_for('delete', student_id=student.id) }}">
+                <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+            {% endif %}
+            <a class="imdb" href="{{ url_for('find', student_name = student.name )}}" target="_blank" title="Find this student on IMDb">IMDb</a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+<img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/00.jpg') }}" title="ghhhhhhhhhhhc">
+{% endblock %}

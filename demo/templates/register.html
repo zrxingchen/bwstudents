@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>注册页面</h3>
+<form method="post" action='/regist'>
+    <label>用户名：<input type="text" name="username" value=""></label></br>
+    <label>密码：<input type="password" name="password" value=""></label></br>
+    <label>重复密码：<input type="password2" name="password2" value=""></label></br>
+    
+    <input type="submit" value="注册">
+</form>
+{% endblock %}
